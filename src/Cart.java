@@ -5,9 +5,9 @@ public class Cart {
 
 
     //Constructor:
-    Public Cart(){
+    public Cart() {
         ArrayList<Book> loanedBook = new ArrayList<>();
-        ArrayList<ComicBook> LoanedComicBook = new ArrayList<>();
+        ArrayList<ComicBook> loanedComicBook = new ArrayList<>();
         ArrayList<Movie> loanedMovie = new ArrayList<>();
     }
 }

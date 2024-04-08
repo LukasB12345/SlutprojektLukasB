@@ -1,29 +1,35 @@
-public class Client {
+public class Client extends Cart { //a client has a cart
     //Attributes:
     public int accountNumber;
 
+    //Constructors:
+
+    //Default constructor:
+    public Client() {
+    }
+
     //Constructor:
-public LoanBook(Book Book){}
-}
-
-public LoanMovie{
-
-}
-
-public SeeMyLoans{
-
-}
-
-public ShowAvailableBooks{
-
-}
-
-public ShowAvailableComicBooks{
+    public Client(int accountNumber) {
 
     }
 
-    public ShowAvailableMovies{
+//Methods:
 
-    }
+//public LoanBook(Book Book){}
+
+    // public loanMovie {}
+
+    //  public seeMyLoans {}
+
+    //  public showAvailableBooks {}
+
+    // public showAvailableComicBooks {}
+
+    // public showAvailableMovies {}
+
+}
+
+
+
 
 
