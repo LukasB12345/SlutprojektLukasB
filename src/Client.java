@@ -10,12 +10,12 @@ public class Client extends Cart { //a client has a cart
 
     //Constructor:
     public Client(int accountNumber) {
-
+        this.accountNumber = accountNumber;
     }
 
 //Methods:
 
-//public LoanBook(Book Book){}
+//public loanBook(Book Book){}
 
     // public loanMovie {}
 

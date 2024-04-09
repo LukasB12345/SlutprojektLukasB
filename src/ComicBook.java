@@ -15,7 +15,7 @@ public class ComicBook extends Book { //This is a SUB-class
     }
 
     //Constructor
-    public ComicBook(String name, int number, String genre) {
+    public ComicBook(String name, int number, String genre) { //A comic book is a sort of book and every comic book has a name, number and genre
         super(name, number, genre);
         this.name = name;
         this.number = number;

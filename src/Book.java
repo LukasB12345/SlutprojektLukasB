@@ -14,7 +14,7 @@ public class Book { //This is a SUPER-class
     }
 
     //Constructor:
-    public Book(String name, int number, String genre) {
+    public Book(String name, int number, String genre) { //every book has a name, number and genre
         this.name = name;
         this.number = number;
         this.genre = genre;

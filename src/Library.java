@@ -5,6 +5,4 @@ public class Library {
     ArrayList<Book> loanedBook = new ArrayList<>();
     ArrayList<ComicBook> loanedComicBook = new ArrayList<>();
     ArrayList<Movie> loanedMovie = new ArrayList<>();
-
-
 }
