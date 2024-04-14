@@ -19,4 +19,8 @@ public class Book { //This is a SUPER-class
         this.number = number;
         this.genre = genre;
     }
+
+    public String getBookName() {
+        return this.name;
+    }
 }
