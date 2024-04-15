@@ -1,6 +1,6 @@
 import java.util.ArrayList;
 
-public class Client extends Cart { //a client has a cart
+public class Client { //a client has a cart
     //Attributes:
     public String name;
     private Cart ClientCart = new Cart();

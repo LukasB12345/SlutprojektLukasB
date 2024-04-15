@@ -57,20 +57,22 @@ public class Library {
     private void AddItem() {
         int choice;
         Items.ShowAvailableItems();
-        System.out.println("Please enter what kind of item you want to loan, 1.Book, 2.Comic book, 3.Movie");
+        System.out.println("");
+        System.out.println("Please enter what kind of item you want to loan, 1.Book, 2.Comic book, 3.Movie, 4.Audio book");
         if (scanner.hasNextInt()) { //makes sure that the user inputs an int, and not a value that is not allowed, ex. a double or a String/characters.
             choice = scanner.nextInt();
             scanner.nextLine();
-            if (choice > 5 || choice < 1) {
-                System.out.println("You need to choose an integer between 1-5!!! Try again: "); //tells the user that their input is not allowed and lets the user try again.
+            if (choice > 4 || choice < 1) {
+                System.out.println("You need to choose an integer between 1-4!!! Try again: "); //tells the user that their input is not allowed and lets the user try again.
             }
             switch (choice) {
                 case 1 -> LoanBook();//Called if the user chooses 1
                 case 2 -> LoanComicBook();//Called if the user chooses 2
                 case 3 -> LoanMovie(); //Called if the user chooses 3
+                case 4 -> LoanAudioBook(); //Called if the user chooses 4
             }
-        } else { //if the user doesn't choose an integer between 1-3
-            System.out.println("You need to choose an integer between 1-3!!! Try again: "); //tells the user that their input is not allowed and lets the user try again.
+        } else { //if the user doesn't choose an integer between 1-4
+            System.out.println("You need to choose an integer between 1-4!!! Try again: "); //tells the user that their input is not allowed and lets the user try again.
             scanner.nextLine();
         }
     }
@@ -142,10 +144,32 @@ public class Library {
 
     }
 
+    private void LoanAudioBook() { //Loan an audiobook by entering the number of the audiobook
+        Items.ShowAvailableAudioBooks();
+        System.out.println("Please enter the number of the audiobook you want to loan");
+        if (scanner.hasNextInt()) { //makes sure that the user inputs an int, and not a value that is not allowed, ex. a double or a String/characters.
+            int AudioBookNumber = scanner.nextInt();
+
+            if (AudioBookNumber > 3 || AudioBookNumber < 1) {
+                System.out.println("This book does not exist, please enter a valid number!");
+                LoanBook();
+            } else {
+                for (AudioBook audiobook : Items.ListOfAudioBooks) {
+                    if (AudioBookNumber == audiobook.number) {
+                        cart.loanedAudioBook.add(audiobook);
+                    }
+                }
+            }
+        } else { //if the user doesn't choose an integer between 1-3
+            System.out.println("You need to choose an integer between 1-3!!! Try again: "); //tells the user that their input is not allowed and lets the user try again.
+            scanner.nextLine();
+        }
+    }
+
     private void RemoveItem() {
         int choice;
         Items.ShowAvailableItems();
-        System.out.println("Please enter what kind of item you want to remove, 1.Book, 2.Comic book, 3.Movie");
+        System.out.println("Please enter what kind of item you want to remove, 1.Book, 2.Comic book, 3.Movie, 4.Audiobook");
         if (scanner.hasNextInt()) { //makes sure that the user inputs an int, and not a value that is not allowed, ex. a double or a String/characters.
             choice = scanner.nextInt();
             if (choice > 5 || choice < 1) {
@@ -155,9 +179,10 @@ public class Library {
                 case 1 -> RemoveBook();//Called if the user chooses 1
                 case 2 -> RemoveComicBook();///Called if the user chooses 2
                 case 3 -> RemoveMovie(); //Called if the user chooses 3
+                case 4 -> RemoveAudioBook(); //Called if the user chooses 4
             }
-        } else { //if the user doesn't choose an integer between 1-3
-            System.out.println("You need to choose an integer between 1-3!!! Try again: "); //tells the user that their input is not allowed and lets the user try again.
+        } else { //if the user doesn't choose an integer between 1-4
+            System.out.println("You need to choose an integer between 1-4!!! Try again: "); //tells the user that their input is not allowed and lets the user try again.
             scanner.nextLine();
         }
     }
@@ -232,6 +257,31 @@ public class Library {
                 } else {
                     System.out.println("This movie does not exist, please enter a valid number!");
                     RemoveMovie();
+                }
+            }
+        } else { //if you don't choose an existing integer
+            System.out.println("You need to choose an integer that exists!!! Try again: "); //tells the user that their input is not allowed and lets the user try again.
+            scanner.nextLine();
+        }
+    }
+
+    private void RemoveAudioBook() { //Loan an audiobook by entering the number of the audiobook
+        if (cart.loanedAudioBook.isEmpty()) {
+            System.out.println("You don't have any audiobooks in your cart!");
+            return;
+        }
+        cart.seeLoanedAudioBooks();
+        System.out.println("Please enter the number of the audiobook you want to remove from your loans");
+        if (scanner.hasNextInt()) { //makes sure that the user inputs an int, and not a value that is not allowed, ex. a double or a String/characters.
+            int AudioBookNumber = scanner.nextInt();
+
+            for (AudioBook audiobook : cart.loanedAudioBook) {
+                if (audiobook.number == AudioBookNumber) {
+                    cart.loanedAudioBook.remove(audiobook);
+                    System.out.println("Removed audiobook");
+                    return;
+                } else {
+                    System.out.println("This audiobook does not exist, please enter a valid number!");
                 }
             }
         } else { //if you don't choose an existing integer
