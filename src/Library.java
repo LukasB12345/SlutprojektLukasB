@@ -2,8 +2,8 @@ import java.util.ArrayList;
 import java.util.Scanner;
 
 public class Library {
-    private static final Scanner scanner = new Scanner(System.in); //Scanner för att läsa in användarens val
-    static Cart cart = new Cart(); //Varukorg som är en egen klass skapas här som sedan används för att lägga varor i varukorgen
+    private static final Scanner scanner = new Scanner(System.in); //Scanner to read the users choices
+    static Cart cart = new Cart(); //A cart is another class, but is created here.
 
     ArrayList<Client> allClients = new ArrayList<>();
 
@@ -14,30 +14,30 @@ public class Library {
 
     public void Main() {
 
-        boolean running = true; //Programmet körs så länge användaren inte väljer 6 (Avsluta programmet genom att göra running till false) genom en while-loop
+        boolean running = true; //The program is running until the user chooses 5 (5 triggers a case that makes the boolean running false) with a while-loop
 
         int choice;
-        while (running) { //Programmet körs så länge användaren inte väljer 4 (Avsluta programmet) genom en while-loop
+        while (running) { //The program is running until the user chooses 5 (5 triggers a case that makes the boolean running false) with a while-loop
             System.out.println("Welcome to my shop! Choose 1-5 in the menu below:\nChoice 1 = Add product to cart\nChoice 2 = Remove product from cart\nChoice 3 = List all items in cart\nChoice 4 = Register new client \nChoice 5 = Exit library");
-            if (scanner.hasNextInt()) { //ser till att användaren skriver en int och inte ett otillåtet värde
+            if (scanner.hasNextInt()) { //makes sure that the user inputs an int, and not a value that is not allowed, ex. a double or a String/characters.
                 choice = scanner.nextInt();
                 scanner.nextLine();
                 if (choice > 5 || choice < 1) {
-                    System.out.println("You need to choose an integer between 1-5!!! Try again: "); //säger till ifall användaren skriver ett otillåtet tal och låter användaren försöka igen tills det blir rätt
+                    System.out.println("You need to choose an integer between 1-5!!! Try again: "); //tells the user that their input is not allowed and lets the user try again.
                 }
                 switch (choice) {
-                    case 1 -> AddItem();//Ifall användaren väljer 1 anropas metoden
-                    case 2 -> RemoveItem();//Ifall användaren väljer 2 anropas metoden
-                    case 3 -> ListAllLoanedItems(); //Ifall användaren väljer 3 anropas metoden
-                    case 4 -> RegisterClient(); //Ifall användaren väljer 4 anropas metoden
-                    case 5 -> { //Ifall användaren väljer 5 körs koden på den nedre raden:
+                    case 1 -> AddItem();//Called if the user chooses 1
+                    case 2 -> RemoveItem();//Called if the user chooses 2
+                    case 3 -> ListAllLoanedItems(); //Called if the user chooses 3
+                    case 4 -> RegisterClient(); //Called if the user chooses 4
+                    case 5 -> { //If the user chooses 5, the two rows below are run, exiting the program.
                         System.out.println("Bye! Welcome back soon!");
-                        running = false; //Vill man avsluta programmet blir värdet falskt och koden slutar köras/programmet avslutas
+                        running = false; //running is false if the user wants to exit the program, the while-loop is stopped.
                     }
                 }
-            } else { //om man inte väljer/skriver 1-5:
-                System.out.println("You need to choose an integer between 1-5!!! Try again: "); //säger till ifall användaren skriver ett otillåtet tal och låter användaren försöka igen tills det blir rätt
-                scanner.next(); //läser in användarens val med en scanner
+            } else { //if you don't choose an intger between 1-5
+                System.out.println("You need to choose an integer between 1-5!!! Try again: "); //tells the user that their input is not allowed and lets the user try again.
+                scanner.next(); //reads in the users input with a scanner
             }
         }
     }
@@ -50,7 +50,7 @@ public class Library {
         allClients.add(client);
     }
 
-    private void ListAllLoanedItems() { //Prints out everything in the cart
+    private void ListAllLoanedItems() { //Prints out everything in the cart, using a method defined as seeMyLoans.
         cart.seeMyLoans();
     }
 
@@ -58,16 +58,19 @@ public class Library {
         int choice;
         Items.ShowAvailableItems();
         System.out.println("Please enter what kind of item you want to loan, 1.Book, 2.Comic book, 3.Movie");
-        if (scanner.hasNextInt()) { //ser till att användaren skriver en int och inte ett otillåtet värde
+        if (scanner.hasNextInt()) { //makes sure that the user inputs an int, and not a value that is not allowed, ex. a double or a String/characters.
             choice = scanner.nextInt();
             scanner.nextLine();
-            switch (choice) {
-                case 1 -> LoanBook();//Ifall användaren väljer 1 anropas metoden
-                case 2 -> LoanComicBook();//Ifall användaren väljer 2 anropas metoden
-                case 3 -> LoanMovie(); //Ifall användaren väljer 3 anropas metoden
+            if (choice > 5 || choice < 1) {
+                System.out.println("You need to choose an integer between 1-5!!! Try again: "); //tells the user that their input is not allowed and lets the user try again.
             }
-        } else { //om man inte väljer/skriver 1-3:
-            System.out.println("You need to choose an integer between 1-3!!! Try again: "); //säger till ifall användaren skriver ett otillåtet tal och låter användaren försöka igen tills det blir rätt
+            switch (choice) {
+                case 1 -> LoanBook();//Called if the user chooses 1
+                case 2 -> LoanComicBook();//Called if the user chooses 2
+                case 3 -> LoanMovie(); //Called if the user chooses 3
+            }
+        } else { //if the user doesn't choose an integer between 1-3
+            System.out.println("You need to choose an integer between 1-3!!! Try again: "); //tells the user that their input is not allowed and lets the user try again.
             scanner.nextLine();
         }
     }
@@ -75,7 +78,7 @@ public class Library {
     private void LoanBook() { //Loan a book by entering the number of the book
         Items.ShowAvailableBooks();
         System.out.println("Please enter the number of the book you want to loan");
-        if (scanner.hasNextInt()) { //ser till att användaren skriver en int och inte ett otillåtet värde
+        if (scanner.hasNextInt()) { //makes sure that the user inputs an int, and not a value that is not allowed, ex. a double or a String/characters.
             int BookNumber = scanner.nextInt();
 
             if (BookNumber > 3 || BookNumber < 1) {
@@ -88,8 +91,8 @@ public class Library {
                     }
                 }
             }
-        } else { //om man inte väljer/skriver 1-3:
-            System.out.println("You need to choose an integer between 1-3!!! Try again: "); //säger till ifall användaren skriver ett otillåtet tal och låter användaren försöka igen tills det blir rätt
+        } else { //if the user doesn't choose an integer between 1-3
+            System.out.println("You need to choose an integer between 1-3!!! Try again: "); //tells the user that their input is not allowed and lets the user try again.
             scanner.nextLine();
         }
     }
@@ -97,7 +100,7 @@ public class Library {
     private void LoanComicBook() { //Loan a comic book by entering the number of the comic book
         Items.ShowAvailableComicBooks();
         System.out.println("Please enter the number of the comic book you want to loan");
-        if (scanner.hasNextInt()) { //ser till att användaren skriver en int och inte ett otillåtet värde
+        if (scanner.hasNextInt()) { //makes sure that the user inputs an int, and not a value that is not allowed, ex. a double or a String/characters.
             int ComicBookNumber = scanner.nextInt();
 
             if (ComicBookNumber > 3 || ComicBookNumber < 1) {
@@ -110,8 +113,8 @@ public class Library {
                     }
                 }
             }
-        } else { //om man inte väljer/skriver 1-3:
-            System.out.println("You need to choose an integer between 1-3!!! Try again: "); //säger till ifall användaren skriver ett otillåtet tal och låter användaren försöka igen tills det blir rätt
+        } else { //if the user doesn't choose an integer between 1-3
+            System.out.println("You need to choose an integer between 1-3!!! Try again: "); //tells the user that their input is not allowed and lets the user try again.
             scanner.nextLine();
         }
     }
@@ -119,7 +122,7 @@ public class Library {
     private void LoanMovie() { //Loan a movie by entering the number of the movie
         Items.ShowAvailableMovies();
         System.out.println("Please enter the number of the movie you want to loan");
-        if (scanner.hasNextInt()) { //ser till att användaren skriver en int och inte ett otillåtet värde
+        if (scanner.hasNextInt()) { //makes sure that the user inputs an int, and not a value that is not allowed, ex. a double or a String/characters.
             int MovieNumber = scanner.nextInt();
 
             if (MovieNumber > 3 || MovieNumber < 1) {
@@ -132,8 +135,8 @@ public class Library {
                     }
                 }
             }
-        } else { //om man inte väljer/skriver 1-3:
-            System.out.println("You need to choose an integer between 1-3!!! Try again: "); //säger till ifall användaren skriver ett otillåtet tal och låter användaren försöka igen tills det blir rätt
+        } else { //if the user doesn't choose an integer between 1-3
+            System.out.println("You need to choose an integer between 1-3!!! Try again: "); //tells the user that their input is not allowed and lets the user try again.
             scanner.nextLine();
         }
 
@@ -143,15 +146,18 @@ public class Library {
         int choice;
         Items.ShowAvailableItems();
         System.out.println("Please enter what kind of item you want to remove, 1.Book, 2.Comic book, 3.Movie");
-        if (scanner.hasNextInt()) { //ser till att användaren skriver en int och inte ett otillåtet värde
+        if (scanner.hasNextInt()) { //makes sure that the user inputs an int, and not a value that is not allowed, ex. a double or a String/characters.
             choice = scanner.nextInt();
-            switch (choice) {
-                case 1 -> RemoveBook();//Ifall användaren väljer 1 anropas metoden
-                case 2 -> RemoveComicBook();//Ifall användaren väljer 2 anropas metoden
-                case 3 -> RemoveMovie(); //Ifall användaren väljer 3 anropas metoden
+            if (choice > 5 || choice < 1) {
+                System.out.println("You need to choose an integer between 1-5!!! Try again: "); //tells the user that their input is not allowed and lets the user try again.
             }
-        } else { //om man inte väljer/skriver 1-3:
-            System.out.println("You need to choose an integer between 1-3!!! Try again: "); //säger till ifall användaren skriver ett otillåtet tal och låter användaren försöka igen tills det blir rätt
+            switch (choice) {
+                case 1 -> RemoveBook();//Called if the user chooses 1
+                case 2 -> RemoveComicBook();///Called if the user chooses 2
+                case 3 -> RemoveMovie(); //Called if the user chooses 3
+            }
+        } else { //if the user doesn't choose an integer between 1-3
+            System.out.println("You need to choose an integer between 1-3!!! Try again: "); //tells the user that their input is not allowed and lets the user try again.
             scanner.nextLine();
         }
     }
@@ -163,7 +169,7 @@ public class Library {
         }
         cart.seeLoanedBooks();
         System.out.println("Please enter the number of the book you want to remove from your loans");
-        if (scanner.hasNextInt()) { //ser till att användaren skriver en int och inte ett otillåtet värde
+        if (scanner.hasNextInt()) { //makes sure that the user inputs an int, and not a value that is not allowed, ex. a double or a String/characters.
             int BookNumber = scanner.nextInt();
 
             for (Book book : cart.loanedBook) {
@@ -176,8 +182,8 @@ public class Library {
                     RemoveBook();
                 }
             }
-        } else { //om man inte väljer/skriver en existerande siffra:
-            System.out.println("You need to choose an integer that exists!!! Try again: "); //säger till ifall användaren skriver ett otillåtet tal och låter användaren försöka igen tills det blir rätt
+        } else { //if you don't choose an existing integer
+            System.out.println("You need to choose an integer that exists!!! Try again: "); //tells the user that their input is not allowed and lets the user try again.
             scanner.nextLine();
         }
     }
@@ -189,7 +195,7 @@ public class Library {
         }
         cart.seeLoanedComicBooks();
         System.out.println("Please enter the number of the comic book you want to remove from your loans");
-        if (scanner.hasNextInt()) { //ser till att användaren skriver en int och inte ett otillåtet värde
+        if (scanner.hasNextInt()) { //makes sure that the user inputs an int, and not a value that is not allowed, ex. a double or a String/characters.
             int ComicBookNumber = scanner.nextInt();
 
             for (ComicBook comicbook : cart.loanedComicBook) {
@@ -199,11 +205,10 @@ public class Library {
                     return;
                 } else {
                     System.out.println("This comic book does not exist, please enter a valid number!");
-                    RemoveComicBook();
                 }
             }
-        } else { //om man inte väljer/skriver en existerande siffra:
-            System.out.println("You need to choose an integer that exists!!! Try again: "); //säger till ifall användaren skriver ett otillåtet tal och låter användaren försöka igen tills det blir rätt
+        } else { //if you don't choose an existing integer
+            System.out.println("You need to choose an integer that exists!!! Try again: "); //tells the user that their input is not allowed and lets the user try again.
             scanner.nextLine();
         }
     }
@@ -216,7 +221,7 @@ public class Library {
 
         cart.seeLoanedMovies();
         System.out.println("Please enter the number of the movie you want to remove from your loans");
-        if (scanner.hasNextInt()) { //ser till att användaren skriver en int och inte ett otillåtet värde
+        if (scanner.hasNextInt()) { //makes sure that the user inputs an int, and not a value that is not allowed, ex. a double or a String/characters.
             int MovieNumber = scanner.nextInt();
 
             for (Movie movie : cart.loanedMovie) {
@@ -229,8 +234,8 @@ public class Library {
                     RemoveMovie();
                 }
             }
-        } else { //om man inte väljer/skriver en existerande siffra:
-            System.out.println("You need to choose an integer that exists!!! Try again: "); //säger till ifall användaren skriver ett otillåtet tal och låter användaren försöka igen tills det blir rätt
+        } else { //if you don't choose an existing integer
+            System.out.println("You need to choose an integer that exists!!! Try again: "); //tells the user that their input is not allowed and lets the user try again.
             scanner.nextLine();
         }
     }

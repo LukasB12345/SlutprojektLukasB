@@ -22,7 +22,7 @@ public class Items { //All available books, comic books and movies are created h
     public static final ComicBook[] ListOfComicBooks = {ComicBook1, ComicBook2, ComicBook3};
     public static final Movie[] ListOfMovies = {Movie1, Movie2, Movie3};
 
-    public static void ShowAvailableItems() { //Method to show all available items. Books, comic books and movies.
+    public static void ShowAvailableItems() { //Method to show all available items. Books, comic books and movies. Prints out the attributes of available books, comic books and movies.
         for (Book book : ListOfBooks) {
             System.out.println("Name: " + book.name + ", Genre: " + book.genre + ", Number: " + book.number);
         }
@@ -34,19 +34,19 @@ public class Items { //All available books, comic books and movies are created h
         }
     }
 
-    public static void ShowAvailableBooks() {
+    public static void ShowAvailableBooks() { //Method to show all available books. Prints out the attributes of the available books.
         for (Book book : ListOfBooks) {
             System.out.println("Name: " + book.name + ", Genre: " + book.genre + ", Number: " + book.number);
         }
     }
 
-    public static void ShowAvailableComicBooks() {
+    public static void ShowAvailableComicBooks() { //Method to show all available comic books. Prints out the attributes of the available comic books.
         for (ComicBook comicbook : ListOfComicBooks) {
             System.out.println("Name: " + comicbook.name + ", Genre: " + comicbook.genre + ", Number: " + comicbook.number);
         }
     }
 
-    public static void ShowAvailableMovies() {
+    public static void ShowAvailableMovies() { //Method to show all available movies. Prints out the attributes of the available movies.
         for (Movie movie : ListOfMovies) {
             System.out.println("Name: " + movie.name + ", Genre: " + movie.genre + ", Number: " + movie.number);
         }
