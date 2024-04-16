@@ -8,7 +8,6 @@ public class Cart {
     ArrayList<Movie> loanedMovie;
     ArrayList<AudioBook> loanedAudioBook;
 
-
     //Constructor:
     public Cart() { //A cart contains books, comic books, audiobooks and movies that the user have loaned which are available in arraylists that contains objets in a class. It is empty when the program starts running.
         this.loanedBook = new ArrayList<>();

@@ -1,7 +1,7 @@
 import java.util.ArrayList;
 
 
-public class AudioBook extends Book { //This is a SUB-class, an audiobook is a sort of book. (inherits).
+public class AudioBook extends Book { //This is a SUB-class, an audiobook is a sort of book. (inherits). Contains the information that every audiobook that is created needs.
     //Attributes:
     protected String name;
     protected int number;

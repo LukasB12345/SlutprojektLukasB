@@ -42,12 +42,13 @@ public class Library {
         }
     }
 
-    private void RegisterClient() { //Creates a client
+    private void RegisterClient() { //Creates a client, however a client can not do anything as of now.
         System.out.println("Enter the name of the client");
         String ClientName = scanner.next();
 
         Client client = new Client(ClientName);
         allClients.add(client);
+        System.out.println("Client added");
     }
 
     private void ListAllLoanedItems() { //Prints out everything in the cart, using a method defined as seeMyLoans.
@@ -58,7 +59,7 @@ public class Library {
         int choice;
         Items.ShowAvailableItems();
         System.out.println("");
-        System.out.println("Please enter what kind of item you want to loan, 1.Book, 2.Comic book, 3.Movie, 4.Audio book");
+        System.out.println("Please enter what kind of item you want to loan by entering a number from 1-4: 1.Book, 2.Comic book, 3.Movie, 4.Audio book");
         if (scanner.hasNextInt()) { //makes sure that the user inputs an int, and not a value that is not allowed, ex. a double or a String/characters.
             choice = scanner.nextInt();
             scanner.nextLine();
@@ -79,7 +80,7 @@ public class Library {
 
     private void LoanBook() { //Loan a book by entering the number of the book
         Items.ShowAvailableBooks();
-        System.out.println("Please enter the number of the book you want to loan");
+        System.out.println("Please enter the number of the book you want to loan (1-3)");
         if (scanner.hasNextInt()) { //makes sure that the user inputs an int, and not a value that is not allowed, ex. a double or a String/characters.
             int BookNumber = scanner.nextInt();
 
@@ -90,6 +91,7 @@ public class Library {
                 for (Book book : Items.ListOfBooks) {
                     if (BookNumber == book.number) {
                         cart.loanedBook.add(book);
+                        System.out.println("Book added to cart");
                     }
                 }
             }
@@ -101,7 +103,7 @@ public class Library {
 
     private void LoanComicBook() { //Loan a comic book by entering the number of the comic book
         Items.ShowAvailableComicBooks();
-        System.out.println("Please enter the number of the comic book you want to loan");
+        System.out.println("Please enter the number of the comic book you want to loan (1-3)");
         if (scanner.hasNextInt()) { //makes sure that the user inputs an int, and not a value that is not allowed, ex. a double or a String/characters.
             int ComicBookNumber = scanner.nextInt();
 
@@ -112,6 +114,7 @@ public class Library {
                 for (ComicBook comicbook : Items.ListOfComicBooks) {
                     if (ComicBookNumber == comicbook.number) {
                         cart.loanedComicBook.add(comicbook);
+                        System.out.println("Comic book added to cart");
                     }
                 }
             }
@@ -123,7 +126,7 @@ public class Library {
 
     private void LoanMovie() { //Loan a movie by entering the number of the movie
         Items.ShowAvailableMovies();
-        System.out.println("Please enter the number of the movie you want to loan");
+        System.out.println("Please enter the number of the movie you want to loan (1-3)");
         if (scanner.hasNextInt()) { //makes sure that the user inputs an int, and not a value that is not allowed, ex. a double or a String/characters.
             int MovieNumber = scanner.nextInt();
 
@@ -134,6 +137,7 @@ public class Library {
                 for (Movie movie : Items.ListOfMovies) {
                     if (MovieNumber == movie.number) {
                         cart.loanedMovie.add(movie);
+                        System.out.println("Movie added to cart");
                     }
                 }
             }
@@ -146,7 +150,7 @@ public class Library {
 
     private void LoanAudioBook() { //Loan an audiobook by entering the number of the audiobook
         Items.ShowAvailableAudioBooks();
-        System.out.println("Please enter the number of the audiobook you want to loan");
+        System.out.println("Please enter the number of the audiobook you want to loan (1-3)");
         if (scanner.hasNextInt()) { //makes sure that the user inputs an int, and not a value that is not allowed, ex. a double or a String/characters.
             int AudioBookNumber = scanner.nextInt();
 
@@ -157,6 +161,7 @@ public class Library {
                 for (AudioBook audiobook : Items.ListOfAudioBooks) {
                     if (AudioBookNumber == audiobook.number) {
                         cart.loanedAudioBook.add(audiobook);
+                        System.out.println("Audiobook added to cart");
                     }
                 }
             }
@@ -168,8 +173,8 @@ public class Library {
 
     private void RemoveItem() {
         int choice;
-        Items.ShowAvailableItems();
-        System.out.println("Please enter what kind of item you want to remove, 1.Book, 2.Comic book, 3.Movie, 4.Audiobook");
+        ListAllLoanedItems();
+        System.out.println("Please enter what kind of item you want to remove by entering a number from 1-4: 1.Book, 2.Comic book, 3.Movie, 4.Audiobook");
         if (scanner.hasNextInt()) { //makes sure that the user inputs an int, and not a value that is not allowed, ex. a double or a String/characters.
             choice = scanner.nextInt();
             if (choice > 5 || choice < 1) {
@@ -193,7 +198,7 @@ public class Library {
             return;
         }
         cart.seeLoanedBooks();
-        System.out.println("Please enter the number of the book you want to remove from your loans");
+        System.out.println("Please enter the number of the book you want to remove from your loans (1-3)");
         if (scanner.hasNextInt()) { //makes sure that the user inputs an int, and not a value that is not allowed, ex. a double or a String/characters.
             int BookNumber = scanner.nextInt();
 
@@ -204,7 +209,6 @@ public class Library {
                     return;
                 } else {
                     System.out.println("This book does not exist, please enter a valid number!");
-                    RemoveBook();
                 }
             }
         } else { //if you don't choose an existing integer
@@ -219,7 +223,7 @@ public class Library {
             return;
         }
         cart.seeLoanedComicBooks();
-        System.out.println("Please enter the number of the comic book you want to remove from your loans");
+        System.out.println("Please enter the number of the comic book you want to remove from your loans (1-3)");
         if (scanner.hasNextInt()) { //makes sure that the user inputs an int, and not a value that is not allowed, ex. a double or a String/characters.
             int ComicBookNumber = scanner.nextInt();
 
@@ -245,7 +249,7 @@ public class Library {
         }
 
         cart.seeLoanedMovies();
-        System.out.println("Please enter the number of the movie you want to remove from your loans");
+        System.out.println("Please enter the number of the movie you want to remove from your loans (1-3)");
         if (scanner.hasNextInt()) { //makes sure that the user inputs an int, and not a value that is not allowed, ex. a double or a String/characters.
             int MovieNumber = scanner.nextInt();
 
@@ -256,7 +260,6 @@ public class Library {
                     return;
                 } else {
                     System.out.println("This movie does not exist, please enter a valid number!");
-                    RemoveMovie();
                 }
             }
         } else { //if you don't choose an existing integer
@@ -271,7 +274,7 @@ public class Library {
             return;
         }
         cart.seeLoanedAudioBooks();
-        System.out.println("Please enter the number of the audiobook you want to remove from your loans");
+        System.out.println("Please enter the number of the audiobook you want to remove from your loans (1-3)");
         if (scanner.hasNextInt()) { //makes sure that the user inputs an int, and not a value that is not allowed, ex. a double or a String/characters.
             int AudioBookNumber = scanner.nextInt();
 

@@ -1,6 +1,6 @@
 import java.util.ArrayList;
 
-public class ComicBook extends Book { //This is a SUB-class, a ComicBook is a sort of book. (inherits).
+public class ComicBook extends Book { //This is a SUB-class, a ComicBook is a sort of book. (inherits).Contains the information that every comicbook that is created needs.
     //Attributes:
     protected String name;
     protected int number;

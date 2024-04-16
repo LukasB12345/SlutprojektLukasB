@@ -1,6 +1,6 @@
 import java.util.ArrayList;
 
-public class Movie {
+public class Movie { //Contains the information that every movie that is created needs.
     //Attributes:
     protected String name;
     protected int number;

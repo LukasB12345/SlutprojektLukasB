@@ -1,6 +1,6 @@
 import java.util.ArrayList;
 
-public class Book { //This is a SUPER-class
+public class Book { //This is a SUPER-class. Contains the information that every book that is created needs.
     //Attributes:
     protected String name;
     protected int number;
