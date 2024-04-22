@@ -3,7 +3,7 @@ import java.util.ArrayList;
 public class Client { //a client has a cart, however this function does not work yet.
     //Attributes:
     public String name;
-    private Cart ClientCart = new Cart();
+    private Cart clientCart = new Cart();
 
     //Constructors:
 

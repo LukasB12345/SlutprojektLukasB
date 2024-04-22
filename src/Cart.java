@@ -3,10 +3,10 @@ import java.util.ArrayList;
 public class Cart {
     //Attributes:
     int cartNumber;
-    ArrayList<Book> loanedBook;
-    ArrayList<ComicBook> loanedComicBook;
-    ArrayList<Movie> loanedMovie;
-    ArrayList<AudioBook> loanedAudioBook;
+    private ArrayList<Book> loanedBook;
+    private ArrayList<ComicBook> loanedComicBook;
+    private ArrayList<Movie> loanedMovie;
+    private ArrayList<AudioBook> loanedAudioBook;
 
     //Constructor:
     public Cart() { //A cart contains books, comic books, audiobooks and movies that the user have loaned which are available in arraylists that contains objets in a class. It is empty when the program starts running.
@@ -63,4 +63,73 @@ public class Cart {
             System.out.println("Name: " + audiobook.name + ", Audiobook number: " + audiobook.number);
         }
     }
+
+    //Comics:
+    public void loanComic(ComicBook comicbook) {
+        this.loanedComicBook.add(comicbook);
+    }
+
+    public boolean checkNoComic() {
+        return loanedComicBook.isEmpty();
+    }
+
+    public ArrayList<ComicBook> getComics() {
+        return loanedComicBook;
+    }
+
+    public void removeComic(ComicBook comicbook) {
+        loanedComicBook.remove(comicbook);
+    }
+
+    //Books:
+    public void loanBook(Book book) {
+        this.loanedBook.add(book);
+    }
+
+    public boolean checkNoBook() {
+        return loanedBook.isEmpty();
+    }
+
+    public ArrayList<Book> getBooks() {
+        return loanedBook;
+    }
+
+    public void removeBook(Book book) {
+        loanedBook.remove(book);
+    }
+
+    //Movies:
+    public void loanMovie(Movie movie) {
+        this.loanedMovie.add(movie);
+    }
+
+    public boolean checkNoMovie() {
+        return loanedMovie.isEmpty();
+    }
+
+    public ArrayList<Movie> getMovies() {
+        return loanedMovie;
+    }
+
+    public void removeMovie(Movie movie) {
+        loanedMovie.remove(movie);
+    }
+
+    //Audiobooks:
+    public void loanAudioBook(AudioBook audiobook) {
+        this.loanedAudioBook.add(audiobook);
+    }
+
+    public boolean checkNoAudioBook() {
+        return loanedAudioBook.isEmpty();
+    }
+
+    public ArrayList<AudioBook> getAudioBooks() {
+        return loanedAudioBook;
+    }
+
+    public void removeAudioBook(AudioBook audiobook) {
+        loanedAudioBook.remove(audiobook);
+    }
+
 }

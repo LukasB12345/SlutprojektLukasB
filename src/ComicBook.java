@@ -6,6 +6,7 @@ public class ComicBook extends Book { //This is a SUB-class, a ComicBook is a so
     protected int number;
     protected String genre;
 
+
     ArrayList<ComicBook> loanedComicBook = new ArrayList<>();
 
     //Constructors:
@@ -20,6 +21,7 @@ public class ComicBook extends Book { //This is a SUB-class, a ComicBook is a so
         this.name = name;
         this.number = number;
         this.genre = genre;
+
     }
 
 }

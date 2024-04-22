@@ -90,7 +90,8 @@ public class Library {
             } else {
                 for (Book book : Items.listOfBooks) {
                     if (bookNumber == book.number) {
-                        cart.loanedBook.add(book);
+                        //cart.loanedBook.add(book);
+                        cart.loanBook(book);
                         System.out.println("Book added to cart");
                     }
                 }
@@ -113,7 +114,8 @@ public class Library {
             } else {
                 for (ComicBook comicbook : Items.listOfComicBooks) {
                     if (comicBookNumber == comicbook.number) {
-                        cart.loanedComicBook.add(comicbook);
+                        //cart.loanedComicBook.add(comicbook);
+                        cart.loanComic(comicbook);
                         System.out.println("Comic book added to cart");
                     }
                 }
@@ -136,7 +138,8 @@ public class Library {
             } else {
                 for (Movie movie : Items.listOfMovies) {
                     if (movieNumber == movie.number) {
-                        cart.loanedMovie.add(movie);
+                        //  cart.loanedMovie.add(movie);
+                        cart.loanMovie(movie);
                         System.out.println("Movie added to cart");
                     }
                 }
@@ -160,7 +163,8 @@ public class Library {
             } else {
                 for (AudioBook audiobook : Items.listOfAudioBooks) {
                     if (audioBookNumber == audiobook.number) {
-                        cart.loanedAudioBook.add(audiobook);
+                        // cart.loanedAudioBook.add(audiobook);
+                        cart.loanAudioBook(audiobook);
                         System.out.println("Audiobook added to cart");
                     }
                 }
@@ -193,7 +197,7 @@ public class Library {
     }
 
     private void removeBook() { //Remove a book by entering the number of the book
-        if (cart.loanedBook.isEmpty()) {
+        if (cart.checkNoBook()) {
             System.out.println("You don't have any books in your cart!");
             return;
         }
@@ -202,9 +206,9 @@ public class Library {
         if (scanner.hasNextInt()) { //makes sure that the user inputs an int, and not a value that is not allowed, ex. a double or a String/characters.
             int bookNumber = scanner.nextInt();
 
-            for (Book book : cart.loanedBook) {
+            for (Book book : cart.getBooks()) {
                 if (book.number == bookNumber) {
-                    cart.loanedBook.remove(book);
+                    cart.removeBook(book);
                     System.out.println("Removed book");
                     return;
                 } else {
@@ -218,7 +222,7 @@ public class Library {
     }
 
     private void removeComicBook() { //Loan a comic book by entering the number of the comic book
-        if (cart.loanedComicBook.isEmpty()) {
+        if (cart.checkNoComic()) {
             System.out.println("You don't have any comic books in your cart!");
             return;
         }
@@ -227,9 +231,9 @@ public class Library {
         if (scanner.hasNextInt()) { //makes sure that the user inputs an int, and not a value that is not allowed, ex. a double or a String/characters.
             int comicBookNumber = scanner.nextInt();
 
-            for (ComicBook comicbook : cart.loanedComicBook) {
+            for (ComicBook comicbook : cart.getComics()) {
                 if (comicbook.number == comicBookNumber) {
-                    cart.loanedComicBook.remove(comicbook);
+                    cart.removeComic(comicbook);
                     System.out.println("Removed comic book");
                     return;
                 } else {
@@ -243,7 +247,7 @@ public class Library {
     }
 
     private void removeMovie() { //Loan a movie by entering the number of the movie
-        if (cart.loanedMovie.isEmpty()) {
+        if (cart.checkNoMovie()) {
             System.out.println("You don't have any movies in your cart!");
             return;
         }
@@ -253,9 +257,10 @@ public class Library {
         if (scanner.hasNextInt()) { //makes sure that the user inputs an int, and not a value that is not allowed, ex. a double or a String/characters.
             int movieNumber = scanner.nextInt();
 
-            for (Movie movie : cart.loanedMovie) {
+            for (Movie movie : cart.getMovies()) {
                 if (movie.number == movieNumber) {
-                    cart.loanedMovie.remove(movie);
+                    //cart.loanedMovie.remove(movie);
+                    cart.removeMovie(movie);
                     System.out.println("Removed movie");
                     return;
                 } else {
@@ -269,7 +274,7 @@ public class Library {
     }
 
     private void removeAudioBook() { //Loan an audiobook by entering the number of the audiobook
-        if (cart.loanedAudioBook.isEmpty()) {
+        if (cart.checkNoAudioBook()) {
             System.out.println("You don't have any audiobooks in your cart!");
             return;
         }
@@ -277,10 +282,10 @@ public class Library {
         System.out.println("Please enter the number of the audiobook you want to remove from your loans (1-3)");
         if (scanner.hasNextInt()) { //makes sure that the user inputs an int, and not a value that is not allowed, ex. a double or a String/characters.
             int audioBookNumber = scanner.nextInt();
-
-            for (AudioBook audiobook : cart.loanedAudioBook) {
+            for (AudioBook audiobook : cart.getAudioBooks()) {
                 if (audiobook.number == audioBookNumber) {
-                    cart.loanedAudioBook.remove(audiobook);
+                    //   cart.loanedAudioBook.remove(audiobook);
+                    cart.removeAudioBook(audiobook);
                     System.out.println("Removed audiobook");
                     return;
                 } else {
