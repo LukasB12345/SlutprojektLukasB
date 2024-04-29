@@ -16,7 +16,7 @@ public class AudioBook extends Book { //This is a SUB-class, an audiobook is a s
     }
 
     //Constructor
-    public AudioBook(String name, int number, String genre) { //An audiobook is a sort of book and every audio book has a name, number and genre
+    public AudioBook(String name, int number, String genre) { //An audiobook is a sort of book and every audiobook has a name, number and genre
         super(name, number, genre);
         this.name = name;
         this.number = number;

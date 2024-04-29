@@ -8,11 +8,11 @@ public class Library {
     ArrayList<Client> allClients = new ArrayList<>();
 
     public Library() {
-        Main();
+        Main(); //Calls the main method, that contains the menu, where the user can choose what they want to do (which decides which method is then called)
     }
 
 
-    public void Main() {
+    public void Main() { //menu where the user chooses what to do
 
         boolean running = true; //The program is running until the user chooses 5 (5 triggers a case that makes the boolean running false) with a while-loop
 
@@ -46,8 +46,8 @@ public class Library {
         System.out.println("Enter the name of the client");
         String ClientName = scanner.next();
 
-        Client client = new Client(ClientName);
-        allClients.add(client);
+        Client client = new Client(ClientName); //creates a new client with the name that the user inputs
+        allClients.add(client); //adds a client to the arraylist with clients
         System.out.println("Client added");
     }
 
@@ -57,7 +57,7 @@ public class Library {
 
     private void addItem() {
         int choice;
-        Items.showAvailableItems();
+        Items.showAvailableItems();//prints out all available items so the user  can see what is available to borrow
         System.out.println("");
         System.out.println("Please enter what kind of item you want to loan by entering a number from 1-4: 1.Book, 2.Comic book, 3.Movie, 4.Audio book");
         if (scanner.hasNextInt()) { //makes sure that the user inputs an int, and not a value that is not allowed, ex. a double or a String/characters.
@@ -79,7 +79,7 @@ public class Library {
     }
 
     private void loanBook() { //Loan a book by entering the number of the book
-        Items.showAvailableBooks();
+        Items.showAvailableBooks(); //prints out all available books so the user can see what is available to borrow
         System.out.println("Please enter the number of the book you want to loan (1-3)");
         if (scanner.hasNextInt()) { //makes sure that the user inputs an int, and not a value that is not allowed, ex. a double or a String/characters.
             int bookNumber = scanner.nextInt();
@@ -88,9 +88,8 @@ public class Library {
                 System.out.println("This book does not exist, please enter a valid number!");
                 loanBook();
             } else {
-                for (Book book : Items.listOfBooks) {
-                    if (bookNumber == book.number) {
-                        //cart.loanedBook.add(book);
+                for (Book book : Items.listOfBooks) { //For each book that exists in the listOfBooks the if/else-statement is run
+                    if (bookNumber == book.number) { //Makes sure that the correct book is added to the cart (1-3, depending on the users input=bookNumber)
                         cart.loanBook(book);
                         System.out.println("Book added to cart");
                     }
@@ -103,7 +102,7 @@ public class Library {
     }
 
     private void loanComicBook() { //Loan a comic book by entering the number of the comic book
-        Items.showAvailableComicBooks();
+        Items.showAvailableComicBooks(); //prints out all available comicbooks so the user  can see what is available to borrow
         System.out.println("Please enter the number of the comic book you want to loan (1-3)");
         if (scanner.hasNextInt()) { //makes sure that the user inputs an int, and not a value that is not allowed, ex. a double or a String/characters.
             int comicBookNumber = scanner.nextInt();
@@ -112,9 +111,8 @@ public class Library {
                 System.out.println("This comic book does not exist, please enter a valid number!");
                 loanComicBook();
             } else {
-                for (ComicBook comicbook : Items.listOfComicBooks) {
-                    if (comicBookNumber == comicbook.number) {
-                        //cart.loanedComicBook.add(comicbook);
+                for (ComicBook comicbook : Items.listOfComicBooks) { //For each comicbook that exists in the listOfComicBooks the if/else-statement is run
+                    if (comicBookNumber == comicbook.number) { //Makes sure that the correct comicbook is added to the cart (1-3, depending on the users input=comicBookNumber)
                         cart.loanComic(comicbook);
                         System.out.println("Comic book added to cart");
                     }
@@ -127,7 +125,7 @@ public class Library {
     }
 
     private void loanMovie() { //Loan a movie by entering the number of the movie
-        Items.showAvailableMovies();
+        Items.showAvailableMovies(); //prints out all available movies so the user  can see what is available to borrow
         System.out.println("Please enter the number of the movie you want to loan (1-3)");
         if (scanner.hasNextInt()) { //makes sure that the user inputs an int, and not a value that is not allowed, ex. a double or a String/characters.
             int movieNumber = scanner.nextInt();
@@ -136,9 +134,8 @@ public class Library {
                 System.out.println("This movie does not exist, please enter a valid number!");
                 loanMovie();
             } else {
-                for (Movie movie : Items.listOfMovies) {
-                    if (movieNumber == movie.number) {
-                        //  cart.loanedMovie.add(movie);
+                for (Movie movie : Items.listOfMovies) { //For each movie that exists in the listOfMovies the if/else-statement is run
+                    if (movieNumber == movie.number) { //Makes sure that the correct movie is added to the cart (1-3, depending on the users input=movieNumber)
                         cart.loanMovie(movie);
                         System.out.println("Movie added to cart");
                     }
@@ -152,7 +149,7 @@ public class Library {
     }
 
     private void loanAudioBook() { //Loan an audiobook by entering the number of the audiobook
-        Items.showAvailableAudioBooks();
+        Items.showAvailableAudioBooks(); //prints out all available audiobooks so the user  can see what is available to borrow
         System.out.println("Please enter the number of the audiobook you want to loan (1-3)");
         if (scanner.hasNextInt()) { //makes sure that the user inputs an int, and not a value that is not allowed, ex. a double or a String/characters.
             int audioBookNumber = scanner.nextInt();
@@ -161,9 +158,8 @@ public class Library {
                 System.out.println("This book does not exist, please enter a valid number!");
                 loanBook();
             } else {
-                for (AudioBook audiobook : Items.listOfAudioBooks) {
-                    if (audioBookNumber == audiobook.number) {
-                        // cart.loanedAudioBook.add(audiobook);
+                for (AudioBook audiobook : Items.listOfAudioBooks) { //For each audiobook that exists in the listOfAudioBooks the if/else-statement is run
+                    if (audioBookNumber == audiobook.number) { //Makes sure that the correct audiobook is added to the cart (1-3, depending on the users input=audioBookNumber)
                         cart.loanAudioBook(audiobook);
                         System.out.println("Audiobook added to cart");
                     }
@@ -177,7 +173,7 @@ public class Library {
 
     private void removeItem() {
         int choice;
-        listAllLoanedItems();
+        listAllLoanedItems(); //prints out all loaned items so that the user can see what they are able to remove
         System.out.println("Please enter what kind of item you want to remove by entering a number from 1-4: 1.Book, 2.Comic book, 3.Movie, 4.Audiobook");
         if (scanner.hasNextInt()) { //makes sure that the user inputs an int, and not a value that is not allowed, ex. a double or a String/characters.
             choice = scanner.nextInt();
@@ -197,18 +193,18 @@ public class Library {
     }
 
     private void removeBook() { //Remove a book by entering the number of the book
-        if (cart.checkNoBook()) {
+        if (cart.checkNoBook()) { //if there is no books in cart
             System.out.println("You don't have any books in your cart!");
             return;
         }
-        cart.seeLoanedBooks();
+        cart.seeLoanedBooks(); //prints out the currently loaned books
         System.out.println("Please enter the number of the book you want to remove from your loans (1-3)");
         if (scanner.hasNextInt()) { //makes sure that the user inputs an int, and not a value that is not allowed, ex. a double or a String/characters.
             int bookNumber = scanner.nextInt();
 
-            for (Book book : cart.getBooks()) {
-                if (book.number == bookNumber) {
-                    cart.removeBook(book);
+            for (Book book : cart.getBooks()) { //Looks through all books in the cart, if the number that the user inputs exists as a book, it is removed
+                if (book.number == bookNumber) { //if the book exists
+                    cart.removeBook(book); //the book is removed
                     System.out.println("Removed book");
                     return;
                 } else {
@@ -221,19 +217,19 @@ public class Library {
         }
     }
 
-    private void removeComicBook() { //Loan a comic book by entering the number of the comic book
-        if (cart.checkNoComic()) {
+    private void removeComicBook() { //remove a comic book by entering the number of the comic book
+        if (cart.checkNoComic()) { //if there is no comicbooks in cart
             System.out.println("You don't have any comic books in your cart!");
             return;
         }
-        cart.seeLoanedComicBooks();
+        cart.seeLoanedComicBooks(); //prints out the currently loaned comicbooks
         System.out.println("Please enter the number of the comic book you want to remove from your loans (1-3)");
         if (scanner.hasNextInt()) { //makes sure that the user inputs an int, and not a value that is not allowed, ex. a double or a String/characters.
             int comicBookNumber = scanner.nextInt();
 
-            for (ComicBook comicbook : cart.getComics()) {
-                if (comicbook.number == comicBookNumber) {
-                    cart.removeComic(comicbook);
+            for (ComicBook comicbook : cart.getComics()) { //Looks through all comicbooks in the cart, if the number that the user inputs exists as a comicbook, it is removed
+                if (comicbook.number == comicBookNumber) { //if the book exists
+                    cart.removeComic(comicbook); //the comicbook is removed
                     System.out.println("Removed comic book");
                     return;
                 } else {
@@ -246,21 +242,20 @@ public class Library {
         }
     }
 
-    private void removeMovie() { //Loan a movie by entering the number of the movie
-        if (cart.checkNoMovie()) {
+    private void removeMovie() { //remove a movie by entering the number of the movie
+        if (cart.checkNoMovie()) { //if there is no movies in cart
             System.out.println("You don't have any movies in your cart!");
             return;
         }
 
-        cart.seeLoanedMovies();
+        cart.seeLoanedMovies(); //prints out the currently loaned movies
         System.out.println("Please enter the number of the movie you want to remove from your loans (1-3)");
         if (scanner.hasNextInt()) { //makes sure that the user inputs an int, and not a value that is not allowed, ex. a double or a String/characters.
             int movieNumber = scanner.nextInt();
 
-            for (Movie movie : cart.getMovies()) {
-                if (movie.number == movieNumber) {
-                    //cart.loanedMovie.remove(movie);
-                    cart.removeMovie(movie);
+            for (Movie movie : cart.getMovies()) { //Looks through all movies in the cart, if the number that the user inputs exists as a movie, it is removed
+                if (movie.number == movieNumber) { //if the movie exists
+                    cart.removeMovie(movie); //The movie is removed
                     System.out.println("Removed movie");
                     return;
                 } else {
@@ -273,19 +268,18 @@ public class Library {
         }
     }
 
-    private void removeAudioBook() { //Loan an audiobook by entering the number of the audiobook
-        if (cart.checkNoAudioBook()) {
+    private void removeAudioBook() { //remove an audiobook by entering the number of the audiobook
+        if (cart.checkNoAudioBook()) { //if there is no audiobooks in cart
             System.out.println("You don't have any audiobooks in your cart!");
             return;
         }
-        cart.seeLoanedAudioBooks();
+        cart.seeLoanedAudioBooks(); //prints out the currently loaned audiobooks
         System.out.println("Please enter the number of the audiobook you want to remove from your loans (1-3)");
         if (scanner.hasNextInt()) { //makes sure that the user inputs an int, and not a value that is not allowed, ex. a double or a String/characters.
             int audioBookNumber = scanner.nextInt();
-            for (AudioBook audiobook : cart.getAudioBooks()) {
-                if (audiobook.number == audioBookNumber) {
-                    //   cart.loanedAudioBook.remove(audiobook);
-                    cart.removeAudioBook(audiobook);
+            for (AudioBook audiobook : cart.getAudioBooks()) { //Looks through all audiobooks in the cart, if the number that the user inputs exists as an audiobook, it is removed
+                if (audiobook.number == audioBookNumber) { //if the audiobook exists
+                    cart.removeAudioBook(audiobook); //it is removed
                     System.out.println("Removed audiobook");
                     return;
                 } else {
