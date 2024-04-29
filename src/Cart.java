@@ -2,7 +2,6 @@ import java.util.ArrayList;
 
 public class Cart {
     //Attributes:
-    int cartNumber;
     private ArrayList<Book> loanedBook;
     private ArrayList<ComicBook> loanedComicBook;
     private ArrayList<Movie> loanedMovie;
